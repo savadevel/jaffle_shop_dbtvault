@@ -6,3 +6,11 @@ target/
 .idea/
 
 dbt_modules
+
+.env
+
+dbt-env/
+
+dbt_packages/
+
+package-lock.yml

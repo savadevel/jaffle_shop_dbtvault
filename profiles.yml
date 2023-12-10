@@ -8,10 +8,10 @@ jaffle_shop:
     dev:
       type: postgres
       threads: 1
-      host: postgres
-      port: 5432
-      user: postgres
-      pass: postgres
-      dbname: postgres
+      host: "{{ env_var('DBT_HOST') }}"
+      port: 6432
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_PASSWORD') }}"
+      dbname: otus-hw
       schema: dbt
   target: dev  

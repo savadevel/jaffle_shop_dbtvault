@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: src
-    database: postgres
+    database: otus-hw
     schema: dbt
     tables:
       - name: source_customers
