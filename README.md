@@ -1,44 +1,33 @@
-## Configure environment
+## Моделирование данных в Хранилище (с использованием Data Vault и dbt)
 
-1. Install prerequisites:
-    - IDE (e.g. [VS Code](https://code.visualstudio.com/docs/setup/setup-overview))
-    - [Docker](https://docs.docker.com/engine/install/)
+1. Постройте витрину данных над Data Vault
+* Динамика изменения количества заказов в разрезе календарной недели и статуса заказа
 
-1. Fork & Clone this repository and open in IDE
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/14ebd31f-26ca-4e63-9fd5-342f33801c86)
 
-1. Spin up Docker containers
+2. Покажите изменения атрибутного состава клиентов
+* Постройте представление Point-in-time table которое покажет актуальные атрибуты клиента (first name, last name, email) на заданный момент времени.
 
-    All the services are configured via [Docker containers](./docker-compose.yml).
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/23381ef3-2289-4960-9b96-bda7da4f0b28)
 
-    - devcontainer
-    - Postgres
+3. Имитируйте добавление нового источника данных о клиентах
+* Добавьте данные из нового файла в Hub customer
 
-    ```bash
-    # build dev container
-    devcontainer build .
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/bcc2d756-984b-422a-893a-6cfa2615390e)
 
-    # open dev container
-    devcontainer open .
-    ```
+* Добавьте новые атрибуты в отдельный Satellite
 
-    ![](./docs/1_docker_compose_services.png)
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/db77d658-8b63-4e00-bf29-06f1e99a48ed)
 
-1. Verify you are in a development container by running commands:
+* Обновите представление Point-in-time table которое покажет все актуальные атрибуты клиента (first name, last name, email, country, age) 
 
-    ```bash
-    dbt --version
-    ```
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/74780812-48f4-4d0b-8be9-9c7212528681)
 
-    ![](./docs/2_dbt_version.png)
+* Покажите, как данные отражаются в Хабе и Сателлите
 
-    If any of these commands fails printing out used software version then you are probably running it on your local machine not in a dev container!
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/6c0cbb59-5bca-4fba-80bd-a66e1a73f7f6)
 
 
-## Install dbt packages
+![image](https://github.com/savadevel/jaffle_shop_dbtvault/assets/69199994/4553af80-b26b-4701-8dfc-9be24d2d9918)
 
-1. Install modules via [packages.yml](./packages.yml)
 
-    ```bash
-    dbt clean # clean temp files
-    dbt deps # install dependencies (modules)
-    ```
