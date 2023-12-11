@@ -7,7 +7,7 @@
 
 select
     hc.customer_pk,
-    pit.as_of_date,
+    pit.as_of_date as actual_on,
     scd.first_name,
     scd.last_name,
     scd.email,
